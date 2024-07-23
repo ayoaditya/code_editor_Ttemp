@@ -15,7 +15,6 @@
     "autoprefixer": "^10.4.19",
     "chunks": "^0.2.6",
     "codemirror": "5",
-    "core-js-pure": "^3.37.1",
     "dist": "^0.1.2",
     "env": "^0.0.2",
     "express": "^4.19.2",
@@ -33,7 +32,8 @@
     "socket.io-client": "^4.7.5",
     "tailwindcss": "^3.4.3",
     "uuid": "^9.0.1",
-    "yarn": "^1.22.22"
+    "yarn": "^1.22.22",
+    "core-js-pure": "^3.28.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
