@@ -132,7 +132,4 @@ app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "client/dist", "index.html"));
 });
 
-const port = process.env.PORT || 5000;
-server.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+export default (req, res) => app(req, res);

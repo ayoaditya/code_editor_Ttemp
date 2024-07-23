@@ -1,14 +1,17 @@
 {
-  "name": "your-project-name",
+  "name": "backend",
   "version": "1.0.0",
-  "main": "server.js",
-  "type": "module",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node api/index.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "nodemon": "^3.1.4",
-    "socket.io": "^4.7.5"
-  }
+    "express": "^4.17.1",
+    "socket.io": "^4.4.1",
+    "cors": "^2.8.5",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "child_process": "1.0.2"
+  },
+  "type": "module"
 }
