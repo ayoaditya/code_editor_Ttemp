@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "start": "yarn run dev",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,6 +15,7 @@
     "autoprefixer": "^10.4.19",
     "chunks": "^0.2.6",
     "codemirror": "5",
+    "core-js-pure": "^3.37.1",
     "dist": "^0.1.2",
     "env": "^0.0.2",
     "express": "^4.19.2",
