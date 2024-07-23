@@ -8,4 +8,9 @@ export default defineConfig({
       "core-js-pure": "core-js-pure",
     },
   },
+  build: {
+    rollupOptions: {
+      external: ["core-js-pure"],
+    },
+  },
 });
