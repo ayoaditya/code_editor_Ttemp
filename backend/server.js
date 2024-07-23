@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 // Serve static files from the React app
-app.use(express.static(join(__dirname, "client/dist")));
+app.use(express.static(join(__dirname, "../client/dist")));
 
 const userSocketMap = {};
 const roomChatHistory = {};
@@ -129,7 +129,7 @@ app.post("/runCode", (req, res) => {
 
 // All remaining requests return the React app, so it can handle routing.
 app.use((req, res, next) => {
-  res.sendFile(join(__dirname, "client/dist", "index.html"));
+  res.sendFile(join(__dirname, "../client/dist", "index.html"));
 });
 
 const port = process.env.PORT || 5000;
