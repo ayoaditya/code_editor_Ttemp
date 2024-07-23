@@ -33,7 +33,7 @@ const Editor = ({ editorRef, socketRef, roomid, code }) => {
 
     try {
       const response = await fetch(
-        "https://code-editor-ttemp-server.vercel.app/",
+        "https://codeeditorbackend-8dph.onrender.com/",
         {
           method: "POST",
           headers: {
