@@ -32,16 +32,13 @@ const Editor = ({ editorRef, socketRef, roomid, code }) => {
       .replace(/"/g, "'"); // Replace double quotes with single quotes
 
     try {
-      const response = await fetch(
-        "https://code-editor-ttemp-server.vercel.app/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ code: codeWithoutComments }),
-        }
-      );
+      const response = await fetch("http://localhost:5000", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code: codeWithoutComments }),
+      });
       const data = await response.json();
       if (response.ok) {
         setOutput(data.output);

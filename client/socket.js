@@ -9,5 +9,5 @@ export const initSocket = async () => {
     timeout: 1000000, //Sets a timeout of 10,000 milliseconds (10 seconds) for the connection to be established.
     transports: ["websocket"], //Specifies that the connection should use WebSocket as the transport protocol.
   };
-  return io("https://code-editor-ttemp-server.vercel.app/", options);
+  return io("http://localhost:5000", options);
 };
