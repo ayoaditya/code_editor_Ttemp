@@ -1,24 +1,24 @@
 import express from "express";
-import { createServer } from "http";
+import http from "http";
 import { Server as socketIo } from "socket.io";
 import { exec } from "child_process";
-import { writeFileSync, existsSync, unlinkSync } from "fs";
+import fs from "fs";
 import cors from "cors";
-import { join, dirname } from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const server = createServer(app);
+const server = http.createServer(app);
 const io = new socketIo(server);
 
 app.use(express.json());
 app.use(cors());
 
 // Serve static files from the React app
-app.use(express.static(join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "client/dist")));
 
 const userSocketMap = {};
 const roomChatHistory = {};
@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
   socket.on("runCode", (data) => {
     const { code } = data;
     const fileName = "tempCode.js"; // Assuming JavaScript code for example
-    writeFileSync(fileName, code);
+    fs.writeFileSync(fileName, code);
 
     exec(`node ${fileName}`, (error, stdout, stderr) => {
       if (error) {
@@ -69,8 +69,8 @@ io.on("connection", (socket) => {
         socket.emit("codeOutput", { output: stdout });
       }
 
-      if (existsSync(fileName)) {
-        unlinkSync(fileName);
+      if (fs.existsSync(fileName)) {
+        fs.unlinkSync(fileName);
       } else {
         console.error(`File ${fileName} does not exist.`);
       }
@@ -129,7 +129,7 @@ app.post("/runCode", (req, res) => {
 
 // All remaining requests return the React app, so it can handle routing.
 app.use((req, res, next) => {
-  res.sendFile(join(__dirname, "../client/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "client/dist", "index.html"));
 });
 
 const port = process.env.PORT || 5000;
